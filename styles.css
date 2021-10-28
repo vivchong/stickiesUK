@@ -1,0 +1,261 @@
+/* || IMPORT INTER FONT FAMILY FROM GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* || GENERAL STYLES */
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Inter;
+    background-color: aliceblue;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+
+/* || TYPOGRAPHY */
+
+h1 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 56px;
+    /* identical to box height, or 117% */
+
+    letter-spacing: -0.022em;
+    font-feature-settings: 'tnum' on, 'lnum' on, 'cv05' on;
+
+    color: #000000;
+
+}
+
+h2 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    /* identical to box height, or 133% */
+
+    letter-spacing: -0.019em;
+    font-feature-settings: 'tnum' on, 'lnum' on, 'cv05' on;
+
+    color: #000000;
+}
+
+h3 {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+    /* identical to box height, or 160% */
+
+    letter-spacing: -0.019em;
+    font-feature-settings: 'tnum' on, 'lnum' on, 'cv05' on;
+
+    color: #000000;
+}
+
+h4 {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+
+    letter-spacing: -0.014em;
+    font-feature-settings: 'tnum' on, 'lnum' on, 'cv05' on;
+
+    color: #000000;
+}
+
+.body1 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+
+    text-align: center;
+    letter-spacing: -0.011em;
+}
+
+/* || UTILITIES */
+
+.pri-auto-btn {
+    width: auto;
+    height: 48px;
+    display: inline-flex;
+    padding-top: 12px;
+    padding-right: 16px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: black;
+    border-radius: 8px;
+    text-decoration: none;
+    
+    /* Subhead 1 */
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.011em;   
+}
+
+.pri-auto-btn:hover {
+    background-color: grey;
+}
+
+.nobullets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* || SITEWIDE */
+
+nav {
+    width: 100%;
+    z-index: 100;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px, 44px;
+    margin-left: 12.2%;
+    margin-right: 12.2%;
+    height: 104px;
+}
+
+.logo img{
+    height: 40px;
+}
+
+
+.menu {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 40px;
+    /* Overwrite initial ul css */
+    padding-inline-start: 0;
+}
+
+.menu li {
+    display: flex;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+
+    letter-spacing: -0.014em;
+    font-feature-settings: 'tnum' on, 'lnum' on, 'cv05' on;
+    
+}
+
+.menu li a {
+    color: black;
+    text-decoration: none;
+    
+}   
+
+.right-cart a {
+    color: black;
+    display:flex;
+    gap: 8px;
+    text-decoration: none;
+
+}
+
+
+.bx-cart {
+    align-self: center;
+    font-size: 24px;
+}
+.cart-number {
+    font-size: 0.8rem;
+    border-radius: 50%;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+
+    letter-spacing: -0.014em;
+}
+
+.menu a:hover, 
+.right-cart a:hover {
+    color: pink;
+    transition: all ease 0.2s;
+}
+
+
+/* || HOME PAGE */
+.hero-banner-box {
+    width: 100%;
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #C4C4C4;
+}
+
+.hero-text-container {
+    width: 80%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.hero-slide-1 {
+    background-image: url(./images/slide-1.png);
+}
+
+.featured-collection-section {
+    width: 100%;
+    padding: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: indianred;
+
+}
+.text-container-center {
+    width: 448px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+/* || SHOP PAGES */
+
+
+/* || CONTACT US */
+
+
+/* || CART */
