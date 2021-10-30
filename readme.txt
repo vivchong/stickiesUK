@@ -1,6 +1,6 @@
 Database schema:
 
-Products (ProductID, Name, Price) // table of product details
+Products (ProductID, Name, Price, Category, onSale) // table of product details
 ShippingMethods (ShippingID, ShippingPrice)
 
 Cart (ProductID, Qty) // table of products in cart
@@ -9,3 +9,5 @@ Customers (CustomerID, FirstName, LastName, Email, Address, ApartmentSuite, Post
 
 Orders (OrderID, CustomerID, Amount, Date)
 Order_Items(OrderID, ProductID, Qty)
+
+Inventory (ProductID, inStock)
