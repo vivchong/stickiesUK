@@ -31,6 +31,7 @@ From Cart:
 From Product table:
 - Use item ID to pull 
 
+SESSIONS...
 
 -----
 Possible to add JS to control which category of nail wraps by adding class = categoryname
