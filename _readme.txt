@@ -30,3 +30,18 @@ From Cart:
 
 From Product table:
 - Use item ID to pull 
+
+
+-----
+Possible to add JS to control which category of nail wraps by adding class = categoryname
+
+
+THE DETAILS PUT INTO THIS:
+- Favicon
+- Titles for each page
+- Hovering over image of product also triggers text to change colour
+- Transitions for all hover effects
+- Hovering over sitemap produces underline
+- Flexwrap for the pages for easy formatting
+- Empty children to preserve left to right flow
+

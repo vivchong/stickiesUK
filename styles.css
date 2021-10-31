@@ -26,7 +26,7 @@ body {
 /* || TYPOGRAPHY */
 
 h1 {
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 300;
     font-size: 48px;
@@ -35,10 +35,11 @@ h1 {
 
     letter-spacing: -0.022em;
     font-feature-settings: 'tnum' on, 'lnum' on, 'cv05' on;
+    margin: 0px;
 }
 
 h2 {
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -46,7 +47,7 @@ h2 {
     /* identical to box height, or 133% */
 
     letter-spacing: -0.019em;
-    font-feature-settings: 'tnum' on, 'lnum' on, 'cv05' on;
+    margin: 0px;
 }
 
 h3 {
@@ -63,7 +64,7 @@ h3 {
     margin: 0px;
 }
 
-h4 {
+.h4 {
     font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -72,11 +73,20 @@ h4 {
     /* identical to box height, or 133% */
 
     letter-spacing: -0.014em;
-    font-feature-settings: 'tnum' on, 'lnum' on, 'cv05' on;
+    
+}
+
+.subhead1 {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.011em;  
 }
 
 .body1 {
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -87,7 +97,7 @@ h4 {
 }
 
 .body2 {
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -97,8 +107,16 @@ h4 {
     letter-spacing: -0.006em;
 }
 
+.caption1 {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+}
+
 .legal1 {
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 10px;
@@ -123,7 +141,7 @@ h4 {
     text-decoration: none;
     
     /* Subhead 1 */
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -147,7 +165,7 @@ h4 {
     text-decoration: none;
     
     /* Subhead 1 */
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -314,11 +332,11 @@ footer .left {
     flex-direction: column;
 }
 
-footer .logo, footer img {
+footer .logo img {
+    margin-bottom: 8px;
     height: 32px;
-    width: 132px;
-    margin-bottom: 12px;
 }
+
 
 footer .legal1 {
     margin-top: 32px;
@@ -332,15 +350,18 @@ footer .sitemap {
     gap: 12px;
 }
 
-footer .sitemap ul, a {
+footer .sitemap ul {
     display: flex;
     flex-direction: column;
     gap: 4px;
     list-style: none;
     margin: 0;
     padding: 0;
-    color: #DBDBDB;
+}
+
+footer a {
     text-decoration: none;
+    color: #DBDBDB;
 }
 
 footer a:hover {
@@ -402,12 +423,17 @@ footer a:hover {
     gap: 64px;   
 }
 
-.item-large {
+.product-large {
     display: flex;
     flex-direction: column;
     gap: 16px;
     align-items: flex-start;
-    width: 320px;
+    
+}
+
+.product-large img {
+    width: 100%;
+    object-fit: cover;
 }
 
 .label a {

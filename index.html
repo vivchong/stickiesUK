@@ -20,7 +20,7 @@
             </a>
             <ul class="menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#">Shop<span><i class='bx bx-chevron-down'></i></span></a>
+                <li><a>Shop<span><i class='bx bx-chevron-down'></i></span></a>
                     <ul>
                         <li><a href="shop/shop-all.html">Shop All</a></li>
                         <li><a href="shop/florals-botanicals.html">Florals & Botanicals</a></li>
@@ -36,8 +36,8 @@
                 <a href="cart.php">
                     <!-- Cart Icon -->
                     <i class='bx bx-cart'></i>
-                        <!-- Number of items in cart -->
-                        <span id="cart-number" class="h4">0</span>
+                        <!-- Number of products in cart -->
+                        <span class="cart-number h4">0</span>
 
                 </a>
             </div>
@@ -65,12 +65,10 @@
         <!-- "Grid" of Featured Products -->
         <div class="collection-large">
 
-            <div class="item-large">
-               <div class="img-large">
-                    <a href="#" class="img-large">
-                        <img src="images/001.png"/>
-                    </a>
-               </div>
+            <div class="product-large">
+                <a href="#" class="img-large">
+                    <img src="images/category/101.png"/>
+                </a>
                <div class="label">
                     <a href="#">
                         <h3>Floral Symphony</h3>
@@ -79,12 +77,12 @@
                </div>
             </div>
 
-            <div class="item-large">
-                <div class="img-large">
-                     <a href="#" class="img-large">
-                         <img src="images/003.png"/>
-                     </a>
-                </div>
+            <div class="product-large">
+
+                <a href="#" class="img-large">
+                    <img src="images/category/301.png"/>
+                </a>
+
                 <div class="label">
                      <a href="#">
                          <h3>Tangerine Bloom</h3>
@@ -93,12 +91,12 @@
                 </div>
             </div>
 
-            <div class="item-large">
-                <div class="img-large">
-                     <a href="#" class="img-large">
-                         <img src="images/002.png"/>
-                     </a>
-                </div>
+            <div class="product-large">
+
+                <a href="#" class="img-large">
+                    <img src="images/category/102.png"/>
+                </a>
+
                 <div class="label">
                      <a href="#">
                          <h3>Beleaf in Yourself</h3>
@@ -110,13 +108,13 @@
         </div>
 
         <!-- CTA Button -->
-        <a href="#" class="pri-stretch-btn">View all</a>
+        <a href="shop/shop-all.html" class="pri-stretch-btn">View all</a>
     </div>
 
 <footer>
     <div class="left body2">
         <!-- Logo -->
-        <a href="#" class="logo">
+        <a href="index.html" class="logo">
             <img src="images/logo-white.png"/>
         </a>
 
@@ -132,11 +130,11 @@
             Categories
         </div>
         <ul>
-            <li><a href="#">Shop All</a></li>
-            <li><a href="#">Florals and Botanicals</a></li>
-            <li><a href="#">Glitter</a></li>
-            <li><a href="#">Solids</a></li>
-            <li><a href="#">Sale</a></li>
+            <li><a href="shop/shop-all.html">Shop All</a></li>
+            <li><a href="shop/florals-botanicals.html">Florals and Botanicals</a></li>
+            <li><a href="shop/glitter.html">Glitter</a></li>
+            <li><a href="shop/minimalist.html">Minimalist</a></li>
+            <li><a href="sale.html">Sale</a></li>
         </ul>
     </div>
 
@@ -154,14 +152,7 @@
 
 <script type="text/javascript">
     /* Fix menu when scrolling DOESN'T WORK. maybe because you used default nav? */
-    $(window).scroll(function() {
-        if($(document).scrollTop() > 50) {
-            $('.nav').addClass('fix-nav');
-        }
-        else {
-            $('.nav').removeClass('fix-nav');
-        }
-    });
+
 </script>
 </body>
 </html>
