@@ -16,22 +16,22 @@
     <nav>
         <div class="navigation">
             <!-- Logo -->
-            <a href="../index.html" class="logo">
+            <a href="../index.php" class="logo">
                 <img src="../images/logo-black.png"/>
             </a>
             <ul class="menu">
-                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
                 <li><a>Shop<span><i class='bx bx-chevron-down'></i></span></a>
                     <ul>
-                        <li><a href="../shop/shop-all.html">Shop All</a></li>
-                        <li><a href="../shop/florals-botanicals.html">Florals & Botanicals</a></li>
-                        <li><a href="../shop/glitter.html">Glitter</a></li>
-                        <li><a href="../shop/minimalist.html">Minimalist</a></li>
+                        <li><a href="../shop/shop-all.php">Shop All</a></li>
+                        <li><a href="../shop/florals-botanicals.php">Florals & Botanicals</a></li>
+                        <li><a href="../shop/glitter.php">Glitter</a></li>
+                        <li><a href="../shop/minimalist.php">Minimalist</a></li>
                     </ul>
                 </li>
                 <!-- Shop Categories Sub-Menu -->
-                <li><a href="../sale.html">Sale</a></li>
-                <li><a href="../contact-us.html">Contact us</a></li>
+                <li><a href="../sale.php">Sale</a></li>
+                <li><a href="../contact-us.php">Contact us</a></li>
             </ul>
             <div class="right-cart">
                 <a href="../cart.php">
@@ -92,7 +92,7 @@
     <footer>
         <div class="left body2">
             <!-- Logo -->
-            <a href="../index.html" class="logo">
+            <a href="../index.php" class="logo">
                 <img src="../images/logo-white.png"/>
             </a>
     
@@ -108,11 +108,11 @@
                 Categories
             </div>
             <ul>
-                <li><a href="../shop/shop-all.html">Shop All</a></li>
-                <li><a href="../shop/florals-botanicals.html">Florals and Botanicals</a></li>
-                <li><a href="../shop/glitter.html">Glitter</a></li>
-                <li><a href="../shop/minimalist.html">Minimalist</a></li>
-                <li><a href="../sale.html">Sale</a></li>
+                <li><a href="../shop/shop-all.php">Shop All</a></li>
+                <li><a href="../shop/florals-botanicals.php">Florals and Botanicals</a></li>
+                <li><a href="../shop/glitter.php">Glitter</a></li>
+                <li><a href="../shop/minimalist.php">Minimalist</a></li>
+                <li><a href="../sale.php">Sale</a></li>
             </ul>
         </div>
     

@@ -1,7 +1,8 @@
 <?php
 session_start();
-// require_once("dbcontroller.php");
-// $db_handle = new DBController();
+include("dbcontroller.php");
+require_once("dbcontroller.php");
+$db_handle = new DBController();
 
 
 if(!empty($_GET["action"])) { //if $_GET["action"] is not empty i.e. user has executed an action
@@ -51,78 +52,20 @@ switch($_GET["action"]) {
 	case "empty":
 		unset($_SESSION["cart_item"]);
 	break;	
-  }
+}
 }
 ?>
-
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>StickiesUK</title>
-    <link rel="stylesheet" href="theme.css">
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  </head>
-  <body>
-  <!--header-->
-    <header>
-      <nav class="navigation-bar">
-        <ul>
-          <li><a href="index.html"><img class="logo" src="logo.png"> </li>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="sale.html">Sale</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-      </nav>
-    </header>
-  <!--body-->
-    <nav class="sub-navigation">
-      <ul>
-        <li><a class="active" href="cart.html">Cart</a></li>
-        <li><a href="#">></a></li>
-        <li><a href="#">Information</a></li>
-        <li><a href="#">></a></li>
-        <li><a href="#">Shipping</a></li>
-        <li><a href="#">></a></li>
-        <li><a href="#">Payment</a></li>
-        <li><a href="#">></a></li>
-        <li><a href="#">Order Confirmation</a></li>
-      </ul>
-    </nav>
-    <div class="main">
-      <h1>Shopping Cart</h1>
-      <div style="padding-left:20px; padding-right:20px">
-        <table class="cart-table" style="padding-left:50px" width="100%">
-          <tr style="font-weight:bold; border-bottom: solid black 2pt;">
-            <td width="55%">Product</td>
-            <td width="17.5%">Quantity</td>
-            <td width="17.5%">Total</td>
-            <td></td>
-          </tr>
-          <tr class="user-order" style="border-bottom: solid gray 1pt">
-            <td>sample</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td>trash icon</td>
-          </tr>
-        </table>
-        <br>
-        <br>
-      </div>
-      <div class="nextpage" style="text-align:right">
-        <form class="" action="checkout.html" method="post">
-          <input type="checkbox" required name="accept" id="checkbox">
-          <label style="padding-right:20px" for="accept"> I accept the <a href="index.html" style="color:black;">terms and conditions</a></label><br><br>
-          <input style="background-color:black; border-radius:7px; color:white; height:35px; width:250px; margin-right:15px" type="submit" value="Proceed to Checkout">
-        </form>
-      </div>
-      </div>
-    </div>
-
-    <div id="shopping-cart">
+<HTML>
+<HEAD>
+<TITLE>Simple PHP Shopping Cart</TITLE>
+<link href="style.css" type="text/css" rel="stylesheet" />
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</HEAD>
+<BODY>
+<div id="shopping-cart">
 <div class="txt-heading">Shopping Cart</div>
 
-<a id="btnEmpty" href="cart.php?action=empty">Empty Cart</a>
+<a id="btnEmpty" href="test.php?action=empty">Empty Cart</a>
 <?php
 if(isset($_SESSION["cart_item"])){
     $total_quantity = 0;
@@ -148,7 +91,7 @@ if(isset($_SESSION["cart_item"])){
 				<td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
 				<td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
 				<td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
-				<td style="text-align:center;"><a href="cart.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><i class='bx bx-trash'></i></a></td>
+				<td style="text-align:center;"><a href="test.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><i class='bx bx-trash'></i></a></td>
 				</tr>
 				<?php
 				$total_quantity += $item["quantity"];
@@ -173,5 +116,35 @@ else {
 }
 ?>
 </div>
-  </body>
-</html>
+<div> <a href="cart.php">Cart</a></div>
+
+<div id="product-grid">
+	<div class="txt-heading">Products</div>
+	<!-- CREATE PRODUCT GALLERY -->
+	<?php
+		$product_array = $db_handle->runQuery("SELECT * FROM tblproduct ORDER BY id ASC"); // Array of products ordered by id
+		if (!empty($product_array)) { 
+			foreach($product_array as $key=>$value){ // Value assigned to each key (column)
+	?>
+		<div class="product-item">
+			<form method="post" action="test.php?action=add&code=<?php echo $product_array[$key]["code"]; ?>"> <!-- action == `add` & gets code of product added to cart -->
+				<div class="product-image"><img src="<?php echo $product_array[$key]["image"]; ?>"></div> <!-- prints the required link -->
+				<div class="product-tile-footer">
+					<div class="product-title"><?php echo $product_array[$key]["name"]; ?></div> <!--prints name -->
+					<div class="product-price"><?php echo "$".$product_array[$key]["price"]; ?></div> <!-- prints price -->
+					<div class="cart-action">
+						<input type="text" class="product-quantity" name="quantity" value="1" size="2" /> <!-- quantity is passed -->
+						<input type="submit" value="Add to Cart" class="btnAddAction" /> <!-- execute script which passes product code and qty to backend PHP script-->
+					</div>
+				</div>
+			</form>
+		</div>
+	
+	<?php
+		}
+	}
+	?>
+	<!-- close the brackets here -->
+</div>
+</BODY>
+</HTML>

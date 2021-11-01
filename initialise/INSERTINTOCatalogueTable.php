@@ -5,12 +5,20 @@ $password = "f32ee";
 $dbname = "f32ee";
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password);
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+$sql = "use f32ee";
+if (!mysqli_query($conn, $sql)) {
+	echo "failed to connect to f32ee";
+	mysqli_close($conn);
+}
+else{
+  echo "f32ee database connected......<br>";
+}
 /* The SQL query must be quoted in PHP
 String values inside the SQL query must be quoted
 Numeric values must not be quoted

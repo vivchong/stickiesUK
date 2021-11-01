@@ -35,7 +35,7 @@ if(!mysqli_query($conn, $sql)){
 }
 
 else{
-  echo "Table CustomerInfo created successfully!<br>";
+  echo "Table Cart created successfully!<br>";
 }
 
 mysqli_close($conn);
