@@ -25,12 +25,20 @@ else{
 //create table DesignProject
 $sql = "CREATE TABLE IF NOT EXISTS CustomerInfo (
 Cust_ID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-Name VARCHAR(30),
+First_name VARCHAR(30) NOT NULL,
+Last_name VARCHAR(30) NOT NULL,
+New_first_name VARCHAR(30) NOT NULL,
+New_last_name VARCHAR(30) NOT NULL,
 Email VARCHAR(50) NOT NULL,
-Billing_address VARCHAR(50) NOT NULL,
-Shipping_address VARCHAR(50) NOT NULL,
 Address VARCHAR(50) NOT NULL,
-Zip_Code INT UNSIGNED
+Apartment_suite VARCHAR(30) NOT NULL,
+Zipcode VARCHAR(30) NOT NULL,
+City VARCHAR(50) NOT NULL,
+Phone_number VARCHAR(30) NOT NULL,
+Shipping_Method VARCHAR(30) NOT NULL,
+Shipping_Price VARCHAR(30) NOT NULL,
+Billing_Address VARCHAR(30) NOT NULL,
+Billing_Zip VARCHAR(30) NOT NULL
 )";
 
 if(!mysqli_query($conn, $sql)){
