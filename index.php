@@ -1,9 +1,7 @@
 <?php
 session_start();
 include("dbcontroller.php");
-require_once("dbcontroller.php");
 $db_handle = new DBController();
-
 
 if(!empty($_GET["action"])) { //if $_GET["action"] is not empty i.e. user has executed an action
 	// Uses switch control statment to execute actions
@@ -16,43 +14,50 @@ switch($_GET["action"]) {
 
 		if(!empty($_POST["quantity"])) { // if quantity is not empty
 			
-			// $productByID is an array which is the row of the selected product ProductID/id
-			$productByID = $db_handle->runQuery("SELECT * FROM Catalogue WHERE ProductID='" . $_GET["ProductID"] . "'");  
+			// $productByCode is an array which is the row of the selected product ProductID/id
+			$productByCode = $db_handle->runQuery("SELECT * FROM tblproduct WHERE code='" . $_GET["code"] . "'");  
 			
 			// itemArray of item that was added to cart
 			// itemArray: ProductName, ProductID, quantity, Price, ImageLink
-			$itemArray = array($productByID[0]["ProductID"]=>array('ProductName'=>$productByID[0]["ProductName"], 'ProductID'=>$productByID[0]["ProductID"], 'quantity'=>$_POST["quantity"], 'Price'=>$productByID[0]["Price"], 'ImageLink'=>$productByID[0]["ImageLink"]));
+			$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["name"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"], 'image'=>$productByCode[0]["image"]));
 			
-			if(!empty($_SESSION["cart_item"])) { // if cart already has items in it
-				// check if same product is already in cart
-				if(in_array($productByID[0]["ProductID"],array_keys($_SESSION["cart_item"]))) { // match
-					foreach($_SESSION["cart_item"] as $k => $v) { // for each unique item in cart
-						if($productByID[0]["ProductID"] == $k) { // if product ID matches 
-							if(empty($_SESSION["cart_item"][$k]["quantity"])) { // if qty = 0 in cart
-									$_SESSION["cart_item"][$k]["quantity"] = 0; // set qty = 0
+			if(!empty($_SESSION["cart_item"])) { // if cart_item (i.e. cart) is NOT empty (i.e. cart already has items in it)
+				// check if same product is already in cart, by finding product code in the cart
+				if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item"]))) {
+					foreach($_SESSION["cart_item"] as $k => $v) { // check each product in cart
+							if($productByCode[0]["code"] == $k) { // if product code of NEW product added matches an EXISTING product in cart
+								if(empty($_SESSION["cart_item"][$k]["quantity"])) { // if EXISTING product quanitity is empty (was deleted before)
+									$_SESSION["cart_item"][$k]["quantity"] = 0;     // set quanitity to 0
+								}
+
+								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"]; // Increment existing quantity with new input quantity
 							}
-							$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"]; //increment by quantity passed
-						}
 					}
 				} 
-				else { // if cart doesn't already have this item, just merge
-					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+                else { // if match not found (i.e. user has not added this product before)
+					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray); // merge cart items array with new itemArray
 				}
-			} else { // if cart is empty
-				$_SESSION["cart_item"] = $itemArray;
+			}
+
+            else { // if cart is empty (i.e. no items in cart)
+				$_SESSION["cart_item"] = $itemArray; 
 			}
 		}
 	break;
+    
+    // REMOVE FROM CART FUNCTION
 	case "remove":
 		if(!empty($_SESSION["cart_item"])) {
 			foreach($_SESSION["cart_item"] as $k => $v) {
-					if($_GET["ProductID"] == $k)
+					if($_GET["code"] == $k)
 						unset($_SESSION["cart_item"][$k]);				
 					if(empty($_SESSION["cart_item"]))
 						unset($_SESSION["cart_item"]);
 			}
 		}
 	break;
+
+    // CLEAR CART FUNCTION
 	case "empty":
 		unset($_SESSION["cart_item"]);
 	break;	
@@ -91,14 +96,27 @@ switch($_GET["action"]) {
                 </li>
                 <!-- Shop Categories Sub-Menu -->
                 <li><a href="sale.php">Sale</a></li>
-                <li><a href="contact-us.php">Contact us</a></li>
             </ul>
             <div class="right-cart">
                 <a href="cart.php">
                     <!-- Cart Icon -->
                     <i class='bx bx-cart'></i>
                         <!-- Number of products in cart -->
-                        <span class="cart-number h4">0</span>
+                <?php
+                    if(isset($_SESSION["cart_item"])){ // if there are items in the cart
+                        $total_quantity = 0;
+                        $total_price = 0;
+                        foreach ($_SESSION["cart_item"] as $item){
+                            $total_quantity += $item["quantity"]; // increment quantity in cart
+                        }
+                    }
+                    else { // if cart is empty
+                        $total_quantity = 0; // set quantity == 0
+                    }
+                        
+                ?>
+                <!-- HTML and echo quantity -->
+                <span class="h4 cart-number"><?php echo $total_quantity; ?></span> 
 
                 </a>
             </div>
@@ -127,11 +145,11 @@ switch($_GET["action"]) {
         <div class="collection-large">
 
             <div class="product-large">
-                <a href="#" class="img-large">
+                <a href="shop/id/101.php" class="img-large">
                     <img src="images/category/101.png"/>
                 </a>
                <div class="label">
-                    <a href="#">
+                    <a href="shop/id/101.php">
                         <h3>Floral Symphony</h3>
                         $15.00
                     </a>
@@ -140,12 +158,12 @@ switch($_GET["action"]) {
 
             <div class="product-large">
 
-                <a href="#" class="img-large">
+                <a href="shop/id/301.php" class="img-large">
                     <img src="images/category/301.png"/>
                 </a>
 
                 <div class="label">
-                     <a href="#">
+                     <a href="shop/id/301.php">
                          <h3>Tangerine Bloom</h3>
                          $15.00
                      </a>
@@ -154,12 +172,12 @@ switch($_GET["action"]) {
 
             <div class="product-large">
 
-                <a href="#" class="img-large">
+                <a href="shop/id/102.php" class="img-large">
                     <img src="images/category/102.png"/>
                 </a>
 
                 <div class="label">
-                     <a href="#">
+                     <a href="shop/id/102.php">
                          <h3>Beleaf in Yourself</h3>
                          $15.00
                      </a>
@@ -210,10 +228,5 @@ switch($_GET["action"]) {
 
 </footer>
 </div>
-
-<script type="text/javascript">
-    /* Fix menu when scrolling DOESN'T WORK. maybe because you used default nav? */
-
-</script>
 </body>
 </html>

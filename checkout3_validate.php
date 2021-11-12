@@ -32,6 +32,7 @@ if ($conn->query($sql) === TRUE) {
 
 mysqli_close($conn);
 // return the original page //
-header("refresh:0;url=http://192.168.56.2/f32ee/Design%20Project/customer_email.php");
+header("refresh:0;url=http://192.168.56.2/f32ee/TO%20MERGE/stickiesUK/customer_email.php");
 ;
  ?>
+

@@ -35,5 +35,6 @@ if ($conn->query($sql) === TRUE) {
 
 mysqli_close($conn);
 // return the original page //
-header("refresh:0;url=http://192.168.56.2/f32ee/Design%20Project/checkout2.php");
+header("refresh:0;url=http://192.168.56.2/f32ee/TO%20MERGE/stickiesUK/checkout2.php");
  ?>
+

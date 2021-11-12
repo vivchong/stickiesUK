@@ -1,0 +1,78 @@
+.cart-wrapper {
+    width: 100%;
+    padding-top: 104px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    padding-left: 12.2%;
+    padding-right: 12.2%;
+}
+
+.page-title {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.checkout-field {
+    width:100%;
+    display: flex;
+    justify-content: right;
+}
+
+.checkbox-terms {
+
+}
+
+.checkout-btn {
+    width: 295px;
+    height: 56px;
+    display: inline-flex;
+    padding-top: 12px;
+    padding-right: 16px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: black;
+    border-radius: 8px;
+    text-decoration: none;
+    
+    /* Subhead 1 */
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.011em;   
+}
+
+.bx-trash {
+    height: 24px;
+    color: black;
+}
+.checkout-btn:hover{
+    background-color: grey;
+    transition: all ease 0.2s;
+    cursor: pointer;
+}
+
+.bx-trash:hover {
+    color: grey;
+    transition: all ease 0.2s;
+}
+
+
+.checkout-wrapper {
+    padding: 20px 40px;
+    padding-bottom: 0px;
+}
+
+.confirm-wrapper {
+    padding: 80px 0px;
+    padding-bottom:0px;
+}

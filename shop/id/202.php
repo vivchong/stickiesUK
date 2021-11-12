@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once("../dbcontroller.php");
+require_once("../../dbcontroller.php");
 $db_handle = new DBController();
 
 
@@ -68,17 +68,18 @@ switch($_GET["action"]) {
 ?>
 
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>StickiesUK - Florals and Botanicals</title>
-<link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="shop-styles.css">
+<title>StickiesUK - Champagne Glow</title>
+<link rel="stylesheet" href="../../styles.css" type="text/css"/>
+<link rel="stylesheet" href="../shop-styles.css">
 <!-- Fav icon -->
-<link rel="shortcut icon" href="../images/fav-icon.png">
+<link rel="shortcut icon" href="../../images/fav-icon.png">
 <!-- Boxicons CSS -->
 <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<!-- JS for carousel -->
+<script src="carousel.js" async></script>
 </head>
 
 <body>
@@ -86,26 +87,27 @@ switch($_GET["action"]) {
     <nav>
         <div class="navigation">
             <!-- Logo -->
-            <a href="../index.php" class="logo">
-                <img src="../images/logo-black.png"/>
+            <a href="../../index.php" class="logo">
+                <img src="../../images/logo-black.png"/>
             </a>
             <ul class="menu">
-                <li><a href="../index.php">Home</a></li>
+                <li><a href="../../index.php">Home</a></li>
                 <li><a>Shop<span><i class='bx bx-chevron-down'></i></span></a>
                     <ul>
-                        <li><a href="../shop/shop-all.php">Shop All</a></li>
-                        <li><a href="../shop/florals-botanicals.php">Florals & Botanicals</a></li>
-                        <li><a href="../shop/glitter.php">Glitter</a></li>
-                        <li><a href="../shop/minimalist.php">Minimalist</a></li>
+                        <li><a href="../shop-all.php">Shop All</a></li>
+                        <li><a href="../florals-botanicals.php">Florals & Botanicals</a></li>
+                        <li><a href="../glitter.php">Glitter</a></li>
+                        <li><a href="../minimalist.php">Minimalist</a></li>
                     </ul>
                 </li>
                 <!-- Shop Categories Sub-Menu -->
-                <li><a href="../sale.php">Sale</a></li>
+                <li><a href="../../sale.php">Sale</a></li>
             </ul>
             <div class="right-cart">
-                <a href="../cart.php">
+                <a href="../../cart.php">
                     <!-- Cart Icon -->
-                    <i class='bx bx-cart'></i>
+                    <i class='bx bx-cart sm'></i>
+                    
                     <!-- Number of products in cart -->
                     <?php
                         if(isset($_SESSION["cart_item"])){ // if there are items in the cart
@@ -122,73 +124,76 @@ switch($_GET["action"]) {
                     ?>
                     <!-- HTML and echo quantity -->
                     <span class="h4 cart-number"><?php echo $total_quantity; ?></span> 
-
+                    
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Feaured Collection -->
-    <div class="shop-category">
-        <!-- Section Header  -->
-        <div class="page-title">
-            <h1>Florals and Botanicals</h1>
+    <!-- Page Wrapper -->
+    <div class="product-page">
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs caption1">
+            <a href ="../../index.php" class="prev">Home</a>
+            <i class='bx bx-chevron-right bx-xs prev'></i>
+            <a href ="../florals-botanicals.php" class="prev">Florals and Botanicals</a>
+            <i class='bx bx-chevron-right bx-xs prev'></i>
+            <a href ="#" class="current">Champagne Glow</a>
         </div>
 
-        <!-- "Grid" of Products in that Category NEED TO UPDATE HREF LINKS-->
-        <div class="collection-default">
+        <!-- Product Overview: 2 column flexbox  -->
+        <div class="product-overview">
+            <!-- Left: Carousel -->
+            <div class="carousel">
+                <div class="carousel__item"><img src="../../images/category/202.png"/></div>
+                <div class="carousel__item"><img src="../../images/category/202-2.png"/></div>
+                <div class="carousel__item"><img src="../../images/category/000.png"/></div>
 
-            <div class="product-default">
-                <a href="id/103.php" class="img-default">
-                    <img src="../images/category/103.png"/>
-                </a>
-               <div class="label">
-                    <a href="id/103.php">
-                        <h3>Summer Lemonade</h3>
-                        $15.00
-                    </a>
-               </div>
+                <div class ="carousel__nav"> 
+                    <span class="carousel__button"><img src="../../images/category/202.png"/></span>
+                    <span class="carousel__button"><img src="../../images/category/202-2.png"/></span>
+                    <span class="carousel__button"><img src="../../images/category/000.png"/></span>
+                </div>
             </div>
+            <!-- Right: Name, Price, Qty input, Add to Cart, Description -->
+            <div class="product-details">
+                <h2>Champagne Glow</h2>
+                <div class="price subhead1">$17.00</div>
+                
+                <!-- ADD TO CART -->
+                <?php
+		            $product_array = $db_handle->runQuery("SELECT * FROM tblproduct ORDER BY id ASC"); // Array of products ordered by id
+                    if (!empty($product_array)) { 
+                        foreach($product_array as $key=>$value){
+                        }
+                    }
+                ?>
+                <!-- Need to change this url here v -->
+                <form method="post" action="202.php?action=add&code=202"> <!-- action == `add` & gets code of product added to cart -->
+                        <!-- CART BUTTON -->
+                        <div class="cart-action">
+                            <div class="qty-field">
+                                <label for="qty" class="subhead1">Quantity</label><br>
+                                <input type="number" name="quantity" min="1" max="5" value="1" class="product-quantity"> <!-- quantity is passed -->
+                            </div>
+                            <input type="submit" value="Add to Cart" class="pri-auto-btn" /> <!-- execute script which passes product ProductID and qty to backend PHP script-->
+                        </div>
+				</form>
+        
 
-            <div class="product-default">
-                <a href="id/102.php" class="img-default">
-                    <img src="../images/category/102.png"/>
-                </a>
-               <div class="label">
-                    <a href="id/102.php">
-                        <h3>Beleaf in Yourself</h3>
-                        $15.00
-                    </a>
-               </div>
+                <div class="description body2">
+                    <div class="subhead1">Description</div>
+                    Bursting with the lightness of spring, Champagne Glow is a fun set that beckons us to have the best manicure whenever life gives us lemons! Set on a base of negative space, Champagne Glow is so impossibly summer-appropriate, it couldn't have us more in the mood for a holiday!
+                </div>
             </div>
-
-            <div class="product-default">
-                <a href="id/101.php" class="img-default">
-                    <img src="../images/category/101.png"/>
-                </a>
-               <div class="label">
-                    <a href="id/101.php">
-                        <h3>Floral Symphony</h3>
-                        $15.00
-                    </a>
-               </div>
-            </div>
-
-            
-
-            <div class="filling-empty-space-childs"></div>
-            <div class="filling-empty-space-childs"></div>
-            <div class="filling-empty-space-childs"></div>
-            <div class="filling-empty-space-childs"></div>
-
         </div>
     </div>
 
     <footer>
         <div class="left body2">
             <!-- Logo -->
-            <a href="../index.php" class="logo">
-                <img src="../images/logo-white.png"/>
+            <a href="../../index.php" class="logo">
+                <img src="../../images/logo-white.png"/>
             </a>
     
             <!-- Tagline -->
@@ -203,11 +208,11 @@ switch($_GET["action"]) {
                 Categories
             </div>
             <ul>
-                <li><a href="../shop/shop-all.php">Shop All</a></li>
-                <li><a href="../shop/florals-botanicals.php">Florals and Botanicals</a></li>
-                <li><a href="../shop/glitter.php">Glitter</a></li>
-                <li><a href="../shop/minimalist.php">Minimalist</a></li>
-                <li><a href="../sale.php">Sale</a></li>
+                <li><a href="../shop-all.php">Shop All</a></li>
+                <li><a href="../florals-botanicals.php">Florals and Botanicals</a></li>
+                <li><a href="../glitter.php">Glitter</a></li>
+                <li><a href="../minimalist.php">Minimalist</a></li>
+                <li><a href="../../sale.php">Sale</a></li>
             </ul>
         </div>
     
@@ -216,24 +221,13 @@ switch($_GET["action"]) {
                 Information
             </div>
             <ul>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="../../contact-us.php">Contact Us</a></li>
             </ul>
         </div>
     
     </footer>
 
 
-<script type="text/javascript">
-    /* Fix menu when scrolling DOESN'T WORK. maybe because you used default nav? */
-    $(window).scroll(function() {
-        if($(document).scrollTop() > 50) {
-            $('.nav').addClass('fix-nav');
-        }
-        else {
-            $('.nav').removeClass('fix-nav');
-        }
-    });
-</script>
 
 </body>
 </html>

@@ -25,38 +25,30 @@ Numeric values must not be quoted
 The word NULL must not be quoted*/
 
 // Database Schema:
-// Catalogue (ProductID, ProductName, Category, onSale, Price)
-
-//ProductID is 3 digits: First digit is category number, last 2 digits are the item sequence —> ProductID of 302 —> Category 3, 2nd item added to Cat3
-
-    // Category 1: Florals
-    // Category 2: Glitter
-    // Category 3: Solids
-
-// onSale is Boolean —> 1 for onSale, 0 not onSale
+// tblproduct (ProductID, ProductName, Category, onSale, Price)
 
 // ImageLink path needs to be in this form: images/101.png
 
-$sql = "INSERT INTO Catalogue (ProductID, ProductName, Category, onSale, Price, ImageLink)
-VALUES (101, 'Floral Symphony', 'Florals', 0, 15.00, 'images/101.png')";
+$sql = "INSERT INTO tblproduct (id, name, code, image, price)
+VALUES (101, 'Floral Symphony', 101, 'images/101.png', 15.00)";
 
-$sql = "INSERT INTO Catalogue (ProductID, ProductName, Category, onSale, Price, ImageLink)
-VALUES (102, 'Beleaf in Yourself', 'Florals', 0, 15.00, 'images/102.png')";
+$sql = "INSERT INTO tblproduct (id, name, code, image, price)
+VALUES (102, 'Beleaf in Yourself', 102, 'images/102.png', 15.00)";
 
-$sql = "INSERT INTO Catalogue (ProductID, ProductName, Category, onSale, Price, ImageLink)
-VALUES (103, 'Summer Lemonade', 'Florals', 0, 15.00, 'images/103.png')";
+$sql = "INSERT INTO tblproduct (id, name, code, image, price)
+VALUES (103, 'Summer Lemonade', 103, 'images/103.png', 15.00)";
 
-$sql = "INSERT INTO Catalogue (ProductID, ProductName, Category, onSale, Price, ImageLink)
-VALUES (201, 'Lake Celestine', 'Glitter', 0, 15.00, 'images/201.png')";
+$sql = "INSERT INTO tblproduct (id, name, code, image, price)
+VALUES (201, 'Lake Celestine', 201, 'images/201.png', 15.00)";
 
-$sql = "INSERT INTO Catalogue (ProductID, ProductName, Category, onSale, Price, ImageLink)
-VALUES (202, 'Champagne Glow', 'Glitter', 0, 15.00, 'images/202.png')";
+$sql = "INSERT INTO tblproduct (id, name, code, image, price)
+VALUES (202, 'Champagne Glow', 202, 'images/202.png', 15.00)";
 
-$sql = "INSERT INTO Catalogue (ProductID, ProductName, Category, onSale, Price, ImageLink)
-VALUES (301, 'Tangerine Bloom', 'Minimalist', 0, 15.00, 'images/301.png')";
+$sql = "INSERT INTO tblproduct (id, name, code, image, price)
+VALUES (301, 'Tangerine Bloom', 301, 'images/301.png', 15.00)";
 
-$sql = "INSERT INTO Catalogue (ProductID, ProductName, Category, onSale, Price, ImageLink)
-VALUES (302, 'Suspended in a Sunbeam', 'Minimalist', 0, 15.00, 'images/302.png')";
+$sql = "INSERT INTO tblproduct (id, name, code, image, price)
+VALUES (302, 'Suspended in a Sunbeam', 302, 'images/302.png', 15.00)";
 
 
 if (mysqli_query($conn, $sql)) {

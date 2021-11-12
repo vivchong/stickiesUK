@@ -23,7 +23,7 @@ mail($to, $subject, $message, $headers,
 '-ff32ee@localhost');
 echo ("mail sent to : ".$to);
 mysqli_close($conn);
-header("refresh:2;url=http://192.168.56.2/f32ee/Design%20Project/checkout4.php");
+header("refresh:2;url=http://192.168.56.2/f32ee/TO%20MERGE/stickiesUK/checkout4.php");
 ?>
 
 </body>

@@ -1,73 +1,112 @@
 <?php
 session_start();
-include "checkout3_retrieve.php"
- ?>
+// require_once("dbcontroller.php");
+// $db_handle = new DBController();
+include "checkout3_retrieve.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>StickiesUK</title>
-    <link rel="stylesheet" href="theme.css">
-    <script type="text/javascript" src="checkout3_newaddress.js"></script>
-  </head>
-  <body>
-  <!--header-->
-    <header>
-      <nav>
-        <div class="navigation">
-            <!-- Logo -->
-            <a href="#" class="logo">
-                <img src="images/logo-black.png"/>
-            </a>
-            <ul class="menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Shop<span><i class='bx bx-chevron-down'></i></span></a>
-                    <ul>
-                        <li><a href="shop/shop-all.html">Shop All</a></li>
-                        <li><a href="shop/florals-botanicals.html">Florals & Botanicals</a></li>
-                        <li><a href="shop/glitter.html">Glitter</a></li>
-                        <li><a href="shop/minimalist.html">Minimalist</a></li>
-                    </ul>
-                </li>
-                <!-- Shop Categories Sub-Menu -->
-                <li><a href="sale.html">Sale</a></li>
-                <li><a href="contact-us.html">Contact us</a></li>
-            </ul>
-            <div class="right-cart">
-                <a href="#">
-                    <!-- Cart Icon -->
-                    <i class='bx bx-cart'></i>
-                        <!-- Number of items in cart -->
-                        <span id="cart-number" class="h4">0</span>
-                </a>
-            </div>
-        </div>
-      </nav>
-    </header>
-  <!--sub-navigation menu-->
-    <nav class="sub-navigation">
-      <ul>
-        <li><a href="cart.php">Cart</a></li>
-        <li><a href="#">></a></li>
-        <li><a href="checkout.php">Information</a></li>
-        <li><a href="#">></a></li>
-        <li><a href="checkout2.php">Shipping</a></li>
-        <li><a href="#">></a></li>
-        <li><a class="active" href="checkout3.php">Payment</a></li>
-        <li><a href="#">></a></li>
-        <li><a href="#">Order Confirmation</a></li>
-      </ul>
-    </nav>
-  <h1>Checkout</h1>
+<head>
+  <meta charset="utf-8">
+  <title>StickiesUK</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cart-styles.css">
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <script type="text/javascript" src="checkout3_newaddress.js"></script>
+
+</head>
+
+<body>
+  <div class="checkout-wrapper">
+  <div class="page-title">
+      <h1>Checkout</h1>
+  </div>
+  <!--sub-navigation bar for checkout page-->
+  <nav class="sub-navigation">
+    <ul>
+      <li><a href="cart.php">Cart</a></li>
+      <li><a href="#">></a></li>
+      <li><a class="active" href="checkout.php">Information</a></li>
+      <li><a href="#">></a></li>
+      <li><a href="#">Shipping</a></li>
+      <li><a href="#">></a></li>
+      <li><a href="#">Payment</a></li>
+      <li><a href="#">></a></li>
+      <li><a href="#">Order Confirmation</a></li>
+    </ul>
+  </nav>
+  <!-- main body begins here-->
   <div class="container">
     <div class="right">
-      <h3>Your Cart Items</h3>
-      <table width="90%">
+    <div id="shopping-cart">
+
+        <?php
+        if(isset($_SESSION["cart_item"])){
+            $total_quantity = 0;
+            $total_price = 0;
+        ?>	
+        <table class="tbl-cart" cellpadding="10" cellspacing="1">
+        <tbody>
         <tr>
-          <td><i>Shipping</i></td>
-          <td style="float:right;"><?php retrieve_shipping($id) ?></td>
-        </tr>
-      </table>
+        <th style="text-align:left;">Name</th>
+        <th style="text-align:right;" width="5%">Quantity</th>
+        <th style="text-align:right;" width="10%">Unit Price</th>
+        <th style="text-align:right;" width="10%">Price</th>
+        </tr>	
+  <?php		
+      foreach ($_SESSION["cart_item"] as $item){
+          $item_price = $item["quantity"]*$item["price"];
+      ?>
+          <tr>
+          <td><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
+          <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
+          <td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
+          <td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
+          </tr>
+          <?php
+          $total_quantity += $item["quantity"];
+          $total_price += ($item["price"]*$item["quantity"]);
+      }
+      ?>
+
+  <tr>
+  <td colspan="1" align="right">Sub-total:</td>
+  <td align="right"><?php echo $total_quantity; ?></td>
+  <td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
+  </tr>
+
+   
+  <tr > 
+    <div id="shipping-option">
+      <td colspan="1" align="right">Shipping:</td>
+      <td align="right" colspan="3"><strong>$<?php echo number_format(retrieve_shipping($id),2); ?>  </strong></td>  <!-- This function is found in checkout3_retrieve.php -->
+    </div>
+  </tr>
+
+  <tr > 
+    <td colspan="1" align="right">Total Cost:</td>
+    <td align="right" colspan="3"><strong>
+      <?php 
+        $shipping_price = retrieve_shipping($id);
+        echo "$".number_format($shipping_price + $total_price, 2);
+      ?>
+    </strong></td>
+  </tr>
+
+  </tbody>
+  </table>		
+    <?php
+  } 
+  else {
+  ?>
+  <div class="no-records">Your Cart is Empty</div>
+  <?php 
+  }
+  ?>
+</div> <!-- end of div id=shopping-cart -->
 
     </div>
     <div class="left">
@@ -119,7 +158,7 @@ include "checkout3_retrieve.php"
           </tr>
         </table>
         <div class="submit-group" style="display:flex">
-          <input type="submit" value="Confirm Order">
+          <input type="submit" value="Confirm & Pay">
           <a style="padding-top:30px; color:black; text-decoration:none;" href="checkout2.php">Return to Shipping</a>
         </div>
       </form>

@@ -20,7 +20,7 @@ switch($_GET["action"]) {
 			$productByCode = $db_handle->runQuery("SELECT * FROM tblproduct WHERE code='" . $_GET["code"] . "'");  
 			
 			// itemArray of item that was added to cart
-			// itemArray: ProductName, ProductID, quantity, Price, ImageLink
+			// itemArray: name, code, quantity, price, image
 			$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["name"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"], 'image'=>$productByCode[0]["image"]));
 			
 			if(!empty($_SESSION["cart_item"])) { // if cart_item (i.e. cart) is NOT empty (i.e. cart already has items in it)
@@ -71,7 +71,7 @@ switch($_GET["action"]) {
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>StickiesUK - Summer Lemonade</title>
+<title>StickiesUK - Beleaf in Yourself</title>
 <link rel="stylesheet" href="../../styles.css" type="text/css"/>
 <link rel="stylesheet" href="../shop-styles.css">
 <!-- Fav icon -->
@@ -138,26 +138,26 @@ switch($_GET["action"]) {
             <i class='bx bx-chevron-right bx-xs prev'></i>
             <a href ="../florals-botanicals.php" class="prev">Florals and Botanicals</a>
             <i class='bx bx-chevron-right bx-xs prev'></i>
-            <a href ="#" class="current">Summer Lemonade</a>
+            <a href ="#" class="current">Beleaf in Yourself</a>
         </div>
 
         <!-- Product Overview: 2 column flexbox  -->
         <div class="product-overview">
             <!-- Left: Carousel -->
             <div class="carousel">
-                <div class="carousel__item"><img src="../../images/category/103.png"/></div>
-                <div class="carousel__item"><img src="../../images/category/103-2.png"/></div>
+                <div class="carousel__item"><img src="../../images/category/102.png"/></div>
+                <div class="carousel__item"><img src="../../images/category/102-2.png"/></div>
                 <div class="carousel__item"><img src="../../images/category/000.png"/></div>
 
                 <div class ="carousel__nav"> 
-                    <span class="carousel__button"><img src="../../images/category/103.png"/></span>
-                    <span class="carousel__button"><img src="../../images/category/103-2.png"/></span>
+                    <span class="carousel__button"><img src="../../images/category/102.png"/></span>
+                    <span class="carousel__button"><img src="../../images/category/102-2.png"/></span>
                     <span class="carousel__button"><img src="../../images/category/000.png"/></span>
                 </div>
             </div>
             <!-- Right: Name, Price, Qty input, Add to Cart, Description -->
             <div class="product-details">
-                <h2>Summer Lemonade</h2>
+                <h2>Beleaf in Yourself</h2>
                 <div class="price subhead1">$15.00</div>
                 
                 <!-- ADD TO CART -->
@@ -169,21 +169,22 @@ switch($_GET["action"]) {
                     }
                 ?>
                 <!-- Need to change this url here v -->
-                <form method="post" action="103.php?action=add&code=103"> <!-- action == `add` & gets code of product added to cart -->
+                <form method="post" action="102.php?action=add&code=102"> <!-- action == `add` & gets code of product added to cart -->
                         <!-- CART BUTTON -->
                         <div class="cart-action">
                             <div class="qty-field">
                                 <label for="qty" class="subhead1">Quantity</label><br>
                                 <input type="number" name="quantity" min="1" max="5" value="1" class="product-quantity"> <!-- quantity is passed -->
                             </div>
-                            <input type="submit" value="Add to Cart" class="pri-auto-btn" /> <!-- execute script which passes product ProductID and qty to backend PHP script-->
+                            <!-- execute script which passes product ProductID and qty to backend PHP script-->
+                            <input type="submit" value="Add to Cart" class="pri-auto-btn" /> 
                         </div>
 				</form>
         
 
                 <div class="description body2">
                     <div class="subhead1">Description</div>
-                    Bursting with the lightness of spring, Summer Lemonade is a fun set that beckons us to have the best manicure whenever life gives us lemons! Set on a base of negative space, Summer Lemonade is so impossibly summer-appropriate, it couldn't have us more in the mood for a holiday!
+                    Bursting with the lightness of spring, Beleaf in Yourself is a fun set that beckons us to have the best manicure whenever life gives us lemons! Set on a base of negative space, Beleaf in Yourself is so impossibly summer-appropriate, it couldn't have us more in the mood for a holiday!
                 </div>
             </div>
         </div>

@@ -29,5 +29,5 @@
   }
 
   $db->close();
-header("refresh:0;url=http://192.168.56.2/f32ee/Design%20Project/checkout3.php");
+header("refresh:0;url=http://192.168.56.2/f32ee/TO%20MERGE/stickiesUK/checkout3.php");
 ?>

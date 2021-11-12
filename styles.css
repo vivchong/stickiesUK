@@ -64,6 +64,20 @@ h3 {
     margin: 0px;
 }
 
+.h3 {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+    /* identical to box height, or 160% */
+
+    letter-spacing: -0.019em;
+    font-feature-settings: 'tnum' on, 'lnum' on, 'cv05' on;
+
+    margin: 0px;
+}
+
 .h4 {
     font-family: Inter, sans-serif;
     font-style: normal;
@@ -177,6 +191,7 @@ h3 {
 .pri-stretch-btn:hover {
     background-color: grey;
     transition: all ease 0.2s;
+    cursor: pointer;
 }
 
 .nobullets {
@@ -253,7 +268,7 @@ nav {
     gap: 24px;
     width: 224px;
     border-radius: 4px;
-    top: 28px;
+    top: 20px;
 }
 
 .menu li ul a:hover {

@@ -4,135 +4,11 @@ header{
   height:120px;
 
 }
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-body {
-    margin: 0px;
-    padding: 0px;
-    background-color: aliceblue;
-    font-family: inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
-    min-width: 800px;
-
-    /* or 150% */
-
-    letter-spacing: -0.011em;
-}
-
-*{
-    box-sizing: border-box;
-}
-
-h1 {
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 32px;
-    text-align:center;
-    /* identical to box height, or 133% */
-
-    letter-spacing: -0.019em;
-    font-feature-settings: 'tnum' on, 'lnum' on, 'cv05' on;
-}
-
-h3 {
-    font-family: Inter, sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 32px;
-    /* identical to box height, or 160% */
-
-    letter-spacing: -0.019em;
-    font-feature-settings: 'tnum' on, 'lnum' on, 'cv05' on;
-
-    margin: 0px;
-}
-
-h4 {
-    font-family: Inter, sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 24px;
-    /* identical to box height, or 133% */
-
-    letter-spacing: -0.014em;
-    font-feature-settings: 'tnum' on, 'lnum' on, 'cv05' on;
-}
-.legal1 {
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 10px;
-    line-height: 12px;
-}
 
 /* || UTILITIES */
 
-.pri-auto-btn {
-    width: auto;
-    height: 48px;
-    display: inline-flex;
-    padding-top: 12px;
-    padding-right: 16px;
-    padding-bottom: 12px;
-    padding-left: 16px;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background-color: black;
-    border-radius: 8px;
-    text-decoration: none;
 
-    /* Subhead 1 */
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: -0.011em;
-}
-
-.pri-stretch-btn {
-    width: 188px;
-    height: 56px;
-    display: inline-flex;
-    padding-top: 12px;
-    padding-right: 16px;
-    padding-bottom: 12px;
-    padding-left: 16px;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background-color: black;
-    border-radius: 8px;
-    text-decoration: none;
-
-    /* Subhead 1 */
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: -0.011em;
-}
-
-.pri-auto-btn:hover,
-.pri-stretch-btn:hover {
-    background-color: grey;
-    transition: all ease 0.2s;
-}
-
-.nobullets {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
 
 
 /* HEADER */
@@ -326,8 +202,14 @@ footer a:hover {
 
 .sub-navigation{
   position: static ;
-  background-color:aliceblue;
+  background-color:white;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
 }
+
 
 .sub-navigation ul{
   display:flex;

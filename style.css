@@ -1,11 +1,7 @@
-body {
-	font-family: Arial;
-	color: #211a1a;
-	font-size: 0.9em;
-}
 
 #shopping-cart {
-	margin: 40px;
+	margin: 0px;
+	width: 100%;
 }
 
 #product-grid {
@@ -19,6 +15,7 @@ body {
 
 #shopping-cart table td {
 	background-color: #FFFFFF;
+
 }
 
 .txt-heading {

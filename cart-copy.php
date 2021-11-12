@@ -72,6 +72,7 @@ switch($_GET["action"]) {
 <link rel="stylesheet" href="styles.css" type="text/css"/>
 <link rel="stylesheet" href="cart-styles.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="cart-styles-flex.css">
 <!-- Fav icon -->
 <link rel="shortcut icon" href="images/fav-icon.png">
 <!-- Boxicons CSS -->
@@ -100,6 +101,7 @@ switch($_GET["action"]) {
             </li>
             <!-- Shop Categories Sub-Menu -->
             <li><a href="sale.php">Sale</a></li>
+            <li><a href="contact-us.php">Contact us</a></li>
         </ul>
         <div class="right-cart">
             <a href="cart.php">
@@ -156,25 +158,82 @@ switch($_GET["action"]) {
           $total_quantity = 0;
           $total_price = 0;
       ?>	
+
+      <div class="cart-table-header">
+        <div class="h4 product-header">Product</div>
+        <div class="h4 qty-header">Quantity</div>
+        <div class="h4 price-header">Unit Price</div>
+        <div class="h4 price-header">Price</div>
+        <div class="h4 remove-header">Remove</div>
+      </div>
+
+      <div class="cart-table-body">
+
+      <?php		
+          foreach ($_SESSION["cart_item"] as $item){
+              $item_price = $item["quantity"]*$item["price"];
+          ?>
+        <div class="cart-row">
+          <div class="row-first">
+            <div class="row-image"> 
+              <img src="<?php echo $item["image"]; ?>" class="row-image" />
+            </div>
+            <div class="row-name-price">
+              <div class="h4"><?php echo $item["name"]; ?></div>
+              <div class="body1"><?php echo "$ ".$item["price"]; ?></div>
+            </div>
+          </div>
+
+          <div class="row-qty">
+            <?php echo $item["quantity"]; ?>
+          </div>
+
+          <div class="row-price">
+            <?php echo "$ ".$item["price"]; ?>
+          </div>
+
+          <div class="row-price">
+            <?php echo "$ ". number_format($item_price,2); ?>
+          </div>
+
+          <div class="row-delete">
+            <a href="cart.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><i class='bx bx-trash'></i></a>
+          </div>
+        </div>
+          <?php
+              $total_quantity += $item["quantity"];
+              $total_price += ($item["price"]*$item["quantity"]);
+          }
+          ?>
+        <div class="cart-row">
+          <div class="row-fist h4">Sub-total:</div>
+          <div class="row-qty"><?php echo $total_quantity; ?></div>
+          <div class="row-price"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></div>
+        </div>
+
+      </div>
+      
+
+      
       <table class="tbl-cart" cellpadding="10" cellspacing="1">
       <tbody>
       <tr>
-      <th style="text-align:left;">Name</th>
-      <th style="text-align:right;" width="5%">Quantity</th>
-      <th style="text-align:right;" width="15%">Unit Price</th>
-      <th style="text-align:right;" width="15%">Price</th>
-      <th style="text-align:center;" width="5%">Remove</th>
+      <th style="text-align:left;"></th>
+      <th style="text-align:right;" width="5%"></th>
+      <th style="text-align:right;" width="15%"></th>
+      <th style="text-align:right;" width="15%"></th>
+      <th style="text-align:center;" width="5%"></th>
       </tr>	
       <?php		
           foreach ($_SESSION["cart_item"] as $item){
               $item_price = $item["quantity"]*$item["price"];
           ?>
               <tr class="body1">
-              <td class="h4"><img src="<?php echo $item["image"]; ?>" class="cart-item-image" /><?php echo $item["name"]; ?></td>
-              <td style="text-align:right;"><?php echo $item["quantity"]; ?></td>
-              <td  style="text-align:right;"><?php echo "$ ".$item["price"]; ?></td>
-              <td  style="text-align:right;"><?php echo "$ ". number_format($item_price,2); ?></td>
-              <td style="text-align:center;"><a href="cart.php?action=remove&code=<?php echo $item["code"]; ?>" class="btnRemoveAction"><i class='bx bx-trash'></i></a></td>
+              <td class="h4"></td>
+              <td style="text-align:right;"></td>
+              <td  style="text-align:right;"></td>
+              <td  style="text-align:right;"></td>
+              <td style="text-align:center;"></td>
               </tr>
               <?php
               $total_quantity += $item["quantity"];

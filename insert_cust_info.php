@@ -49,5 +49,5 @@
   $db->close();
 
 // loads the next page within 0 seconds once button is clicked.
-header("refresh:0;url=http://192.168.56.2/f32ee/Design%20Project/checkout2.php");
+header("refresh:0;url=http://192.168.56.2/f32ee/TO%20MERGE/stickiesUK/checkout2.php");
 ?>
