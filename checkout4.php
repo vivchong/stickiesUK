@@ -15,16 +15,16 @@ switch($_GET["action"]) {
 		// Product ID and Qty is passed into PHP
 
 		if(!empty($_POST["quantity"])) { // if quantity is not empty
-			
+
 			// $productByCode is an array which is the row of the selected product code/id
-			$productByCode = $db_handle->runQuery("SELECT * FROM tblproduct WHERE code='" . $_GET["code"] . "'");  
-			
+			$productByCode = $db_handle->runQuery("SELECT * FROM tblproduct WHERE code='" . $_GET["code"] . "'");
+
       // $itemArray is the product you added into cart
 			$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["name"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"], 'image'=>$productByCode[0]["image"]));
-			
+
 			if(!empty($_SESSION["cart_item"])) { //if cart is not empty
         // check if the product selected is already inside
-				if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item"]))) { 
+				if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item"]))) {
           // foreach item in cart
 					foreach($_SESSION["cart_item"] as $k => $v) {
               // if there is a match (i.e. you added an item that's already inside)
@@ -37,12 +37,12 @@ switch($_GET["action"]) {
 								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
 							}
 					}
-				} 
+				}
         else { // else, if product you selected is not already inside (and cart is not empty): merge current item array with the empty cart array
 					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
 				}
-			} 
-      
+			}
+
       else { // else, if cart is empty: merge current item array with the empty cart array
 				$_SESSION["cart_item"] = $itemArray;
 			}
@@ -64,7 +64,7 @@ switch($_GET["action"]) {
 
 	case "empty":
 		unset($_SESSION["cart_item"]);
-	break;	
+	break;
   }
 }
 ?>
@@ -106,8 +106,8 @@ switch($_GET["action"]) {
             <a href="cart.php?action=empty">
                 <!-- Cart Icon -->
                 <i class='bx bx-cart sm'></i>
-                <span class="h4 cart-number">0</span> 
-                
+                <span class="h4 cart-number">0</span>
+
             </a>
       </div>
     </div>
@@ -129,7 +129,7 @@ switch($_GET["action"]) {
         if(isset($_SESSION["cart_item"])){
             $total_quantity = 0;
             $total_price = 0;
-        ?>	
+        ?>
         <table class="tbl-cart" cellpadding="10" cellspacing="1">
         <tbody>
         <tr>
@@ -137,8 +137,8 @@ switch($_GET["action"]) {
         <th style="text-align:right;" width="5%">Quantity</th>
         <th style="text-align:right;" width="15%">Unit Price</th>
         <th style="text-align:right;" width="15%">Price</th>
-        </tr>	
-  <?php		
+        </tr>
+  <?php
       foreach ($_SESSION["cart_item"] as $item){
           $item_price = $item["quantity"]*$item["price"];
       ?>
@@ -160,34 +160,34 @@ switch($_GET["action"]) {
   <td align="right" colspan="2"><strong><?php echo "$ ".number_format($total_price, 2); ?></strong></td>
   </tr>
 
-   
-  <tr > 
+
+  <tr >
     <div id="shipping-option">
       <td colspan="1" align="right">Shipping:</td>
       <td align="right" colspan="3"><strong>$<?php echo retrieve_shipping($id); ?>  </strong></td>  <!-- This function is found in checkout3_retrieve.php -->
     </div>
   </tr>
 
-  <tr > 
+  <tr >
     <td colspan="1" align="right">Total Cost:</td>
     <td align="right" colspan="3"><strong>
-      <?php 
+      <?php
         $shipping_price = retrieve_shipping($id);
         //$total_cart = number_format($total_price,2) + $shipping_price;
         echo "$".number_format($shipping_price + $total_price, 2);
-        //echo "$ ".number_format($total_cart, 2); 
+        //echo "$ ".number_format($total_cart, 2);
       ?>
     </strong></td>
   </tr>
 
   </tbody>
-  </table>		
+  </table>
     <?php
-  } 
+  }
   else {
   ?>
   <div class="no-records">Your Cart is Empty</div>
-  <?php 
+  <?php
   }
   ?>
 </div> <!-- end of div id=shopping-cart -->
@@ -214,6 +214,18 @@ switch($_GET["action"]) {
       <!-- exit button; continue shopping. directs back to home page  -->
       <div class="submit-group" style="text-align:center">
         <input type="button" onclick="location.href='index.php?action=empty';"value="Continue Shopping">
+				<?php
+					session_start();
+					unset($_SESSION['email']);
+					unset($_SESSION['firstname']);
+					unset($_SESSION['lastname']);
+					unset($_SESSION['address']);
+					unset($_SESSION['country']);
+					unset($_SESSION['zip']);
+					unset($_SESSION['suite']);
+					unset($_SESSION['method']);
+					unset($_SESSION['price']);
+			 	?>
       </div>
     </div>
     <footer>
